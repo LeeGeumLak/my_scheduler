@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TipsActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:id="@+id/buttonlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="60sp"
+        android:gravity="left|top"
+        android:height="60sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/left_arrow" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="도움말"
+            android:textColor="@color/colorBlack"
+            android:textSize="30dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tips_1_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonlayout"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="1. 일정 기능"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_1_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:text="일정 기능 예시입니다. "
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_2_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_1"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="2. 메모 기능"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_2_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:text="메모 기능 예시입니다. "
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_3_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_2"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="3. 일기 기능"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_3_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:text="일기 기능 예시입니다. "
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_4_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_3"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="4. 설정 기능"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tips_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tips_4_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="70dp"
+        android:text="설정 기능 예시입니다. "
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp">
+
+    </TextView>
+
+
+
+</RelativeLayout>

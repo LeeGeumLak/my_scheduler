@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:id="@+id/buttonlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="60sp"
+        android:gravity="center"
+        android:height="60sp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/sidebar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/menu" />
+
+        <TextView
+            android:id="@+id/currentMonth"
+            android:layout_width="fill_parent"
+            android:layout_height="60sp"
+            android:layout_weight="0.6"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="나 만 의  라 이 프  플 래 너"
+            android:textSize="26sp"
+            android:textColor="@color/colorBlack"
+            android:clickable="true">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/tips"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/help" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/whenDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendarView"
+            android:gravity="center_horizontal"
+            android:text="선택한 날짜"
+            android:textColor="@color/colorBlack"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/noSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/whenDate"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="일정이 없습니다"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/total_recycler"
+            android:scrollbars="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/whenDate"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addSchedule_diary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/addSchedule_memo"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/sky"
+            android:src="@drawable/ic_diary"
+            android:visibility="invisible"
+            app:borderWidth="0dp"
+            app:fabSize="normal" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addSchedule_memo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/addSchedule_schedule"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/sky"
+            android:src="@drawable/ic_memo"
+            android:visibility="invisible"
+            app:borderWidth="0dp"
+            app:fabSize="normal" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addSchedule_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/addSchedule_main"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/sky"
+            android:src="@drawable/ic_schedule"
+            android:visibility="invisible"
+            app:borderWidth="0dp"
+            app:fabSize="normal" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addSchedule_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:backgroundTint="@color/sky"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_add" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

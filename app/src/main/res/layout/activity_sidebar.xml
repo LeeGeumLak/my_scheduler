@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="설정"
+            android:textSize="40sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorBlack"/>
+
+        <ImageButton
+            android:id="@+id/sidebar_cancel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/cancel"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_alignParentBottom="true"
+            android:background="#202735"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp">
+
+        <!--   비밀번호 설정     -->
+        <TextView
+            android:id="@+id/pwd_setting"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
+            android:text="비밀번호 설정"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_on_off"
+            android:text="설정"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="80dp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/bt_change"
+            android:text="변경"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <!--<ImageButton
+            android:id="@+id/account_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />-->
+
+        <!--   데이터 백업/복구     -->
+        <TextView
+            android:id="@+id/data_backup"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/pwd_setting"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="데이터 백업/복구"
+            android:clickable="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/backup_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/bt_on_off"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />
+
+        <!--   데이터 리셋     -->
+        <TextView
+            android:id="@+id/data_reset"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/data_backup"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="데이터 초기화"
+            android:clickable="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/reset_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/backup_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />
+
+        <!--  명언/힐링 한마디      -->
+        <TextView
+            android:id="@+id/wise_saying"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/data_reset"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="명언 / 힐링"
+            android:clickable="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/saying_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/reset_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />
+
+        <!--  명상하기   -->
+        <TextView
+            android:id="@+id/meditate"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/wise_saying"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="명상하기"
+            android:clickable="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/meditate_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/saying_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />
+
+        <!--  알람기능   -->
+        <TextView
+            android:id="@+id/alarm"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/meditate"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="알람기능"
+            android:clickable="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/alarm_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/meditate_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />
+
+        <!--   평가하기     -->
+        <TextView
+            android:id="@+id/app_evaluate"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/alarm"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="평가하기"
+            android:clickable="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/evaluate_arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/alarm_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/right_arrow" />
+
+        <!--   버전     -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/app_evaluate"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:text="버전정보"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/evaluate_arrow"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="25dp"
+            android:text="1.0.0"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+</LinearLayout>

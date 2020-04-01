@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">My_scheduler</string>
+    <string name="title_home">Home</string>
+
+    <!-- Ted Permission -->
+    <string name="permission_1">[설정] > [권한] 에서 권한을 허용할 수 있습니다.</string>
+    <string name="permission_2">사진 및 파일을 저장하기 위하여 접근 권한이 필요합니다.</string>
+
+    <string name="wise_saying_1">시간의 걸음걸이에는 세 가지가 있다. 미래는 주저하면서 다가오고, 현재는 화살처럼 날아가고, 과거는 영원히 정지하고 있다.</string>
+    <string name="wise_saying_2">시간을 단축시키는 것은 활동이요, 시간을 견디지 못하게 하는 것은 안일 함이다.</string>
+    <string name="wise_saying_3">미래를 신뢰하지 마라, 죽은 과거는 묻어버려라, 그리고 살아있는 현재에 행동하라.</string>
+    <string name="wise_saying_4">오늘 하루를 헛되이 보냈다면 그것은 커다란 손실이다.
+                                하루를 유익하게 보낸 사람은 하루의 보물을 파낸 것이다. 하루를 헛되이 보냄은 내 몸을 헛되이 소모하고 있다는 것을 기억해야 한다.</string>
+    <string name="wise_saying_5">가장 바쁜 사람이 가장 많은 시간을 갖는다. 부지런히 노력하는 사람이 결국 많은 대가를 얻는다.</string>
+    <string name="wise_saying_6">그대의 하루 하루를 그대의 마지막 날이라고 생각하라.</string>
+    <string name="wise_saying_7">내가 헛되이 보낸 오늘 하루는 어제 죽어간 이들이 그토록 바라던 하루이다.</string>
+    <string name="wise_saying_8">변명 중에서도 가장 어리석고 못난 변명은 "시간이 없어서" 라는 변명이다.</string>
+    <string name="wise_saying_9">사람은 금전을 시간보다 중히 여기지만, 그로 인해 잃어버린 시간은 금전으론 살 수 없다.</string>
+    <string name="wise_saying_10">세월은 누구에게나 공평하게 주어진 자본금이다. 이 자본을 잘 이용한 사람에겐 승리가 있다.</string>
+    <string name="wise_saying_11">승자는 시간을 관리하며 살고, 패자는 시간에 끌려 산다.</string>
+    <string name="wise_saying_12">힘들 땐 무조건 내가 제일 힘든 것이다. 그건 이기적인 게 아니다.</string>
+    <string name="wise_saying_13">삶은 실수투성이야, 우리는 늘 실수를 하지.</string>
+    <string name="wise_saying_14">흔들려도 좋으니 꺾이지만 마라</string>
+    <string name="wise_saying_15">비록 아무도 과거로 돌아가 새 출발할 순 없지만, 누구나 지금 시작해 새 엔딩을 만들 수 있다.</string>
+    <string name="wise_saying_16">달빛에 비치는 바다도 흔들릴 때 더 아름답다. 찰랑일 때 더 빛난다 그대도 눈부시다.</string>
+    <string name="wise_saying_17">인간사에는 안정된 것이 하나도 없음을 기억하라. 그러므로 성공에 들뜨거나 역경에 지나치게 의기소침하지 마라.</string>
+
+
+    <string name="saying_man_1"> - F.실러 - </string>
+    <string name="saying_man_2"> - 괴테 - </string>
+    <string name="saying_man_3"> - 롱펠로 - </string>
+    <string name="saying_man_4"> - 앙리 프레데리크 아미엘 - </string>
+    <string name="saying_man_5"> - 알렉산드리아 피네 - </string>
+    <string name="saying_man_6"> - 호라티우스 - </string>
+    <string name="saying_man_7"> - 소포클레스 - </string>
+    <string name="saying_man_8"> - 에디슨 - </string>
+    <string name="saying_man_9"> - 유태격언 - </string>
+    <string name="saying_man_10"> - 아뷰난드 - </string>
+    <string name="saying_man_11"> - J.하비스 - </string>
+    <string name="saying_man_12"> - 베스트셀러 "죽고 싶지만 떡볶이는 먹고 싶어" - </string>
+    <string name="saying_man_13"> - 영화 "주토피아" - </string>
+    <string name="saying_man_14"> - 동그라미, 새삼스러운 생각 - </string>
+    <string name="saying_man_15"> - 칼 바드 - </string>
+    <string name="saying_man_16"> - 흔글, 무너지지만 말아 - </string>
+    <string name="saying_man_17"> - 소크라테스 - </string>
+
+
+</resources>

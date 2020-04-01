@@ -1,0 +1,214 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".activity.AddDiaryActivity">
+
+
+    <LinearLayout
+        android:id="@+id/buttonlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="left|top"
+        android:height="60sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/left_arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="일기"
+            android:textColor="@color/colorBlack"
+            android:textSize="30dp" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/buttonlayout">
+
+        <RelativeLayout
+            android:id="@+id/interface1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="60dp">
+
+            <!--   일기 쓰는 날짜     -->
+            <TextView
+                android:id="@+id/set_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:text="날짜"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/date_select"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:ems="15"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="날짜"
+                android:inputType="datetime"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray" />
+
+            <Button
+                android:id="@+id/input_diary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="7dp"
+                android:text="확인" />
+
+            <!--   날씨 선택     -->
+            <TextView
+                android:id="@+id/set_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/set_date"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:text="날씨"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="75dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/no_repeat_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="맑음" />
+
+                <RadioButton
+                    android:id="@+id/every_year_btn"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="흐림" />
+
+                <RadioButton
+                    android:id="@+id/every_month_btn"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비" />
+
+                <RadioButton
+                    android:id="@+id/every_week_btn"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="눈" />
+            </RadioGroup>
+
+
+
+            <!--  이미지 가져오기   -->
+            <Button
+                android:id="@+id/get_image"
+                android:layout_below="@id/set_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="이미지" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_below="@id/get_image"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxHeight="200dp"
+                android:maxWidth="200dp"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/get_image"/>
+
+            <!--  일기의 제목      -->
+            <EditText
+                android:id="@+id/TitleEdit"
+                android:layout_below="@id/get_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:ems="15"
+                android:hint="제목(100자)"
+                android:maxLength="100"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray" />
+
+
+            <!--   일기의 내용     -->
+            <EditText
+                android:id="@+id/CotentEdit"
+                android:layout_width="match_parent"
+                android:layout_height="436dp"
+                android:layout_below="@id/TitleEdit"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="내용을 입력하세요(1000자)"
+                android:inputType="textPersonName"
+                android:maxLength="1000"
+                android:scrollHorizontally="false"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

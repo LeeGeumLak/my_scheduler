@@ -18,7 +18,16 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AlarmActivity"></activity>
+
+        <use-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAJOLc7S7r8LHObwtPiWe3ZP7JAfPyAA6c" />
+
+        <activity android:name=".activity.AlarmActivity" />
         <activity android:name=".activity.MeditateActivity" />
         <activity android:name=".activity.WiseSayingActivity" />
         <activity android:name=".activity.MakeBackupActivity" />
@@ -27,13 +36,24 @@
         <activity android:name=".activity.AddScheduleActivity" />
         <activity android:name=".activity.SidebarActivity" />
         <activity android:name=".activity.TipsActivity" />
+
         <activity
-            android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustResize">
+            android:name=".activity.LoadingActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
         <activity
@@ -57,14 +77,12 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
-        </provider>
-
-        <!--  알람 기능을 위한 service와 receiver     -->
+        </provider> <!-- 알람 기능을 위한 service와 receiver -->
         <receiver android:name=".alarm_core.Alarm_receiver" />
 
         <service
             android:name=".alarm_core.RingtonePlayingService"
-            android:enabled="true"/>
+            android:enabled="true" />
     </application>
 
 </manifest>

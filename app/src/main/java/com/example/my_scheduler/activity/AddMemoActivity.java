@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,18 @@ public class AddMemoActivity extends AppCompatActivity {
     private Button get_image_btn;
 
     private EditText date_edit;
+    private EditText location_edit; // edit_location
+
+    private EditText title_edit; // TitleEdit
+    private EditText content_edit; // ContentEdit
+
+    private ImageView image_edit; // imageView
+
+    private String date_str;
+    private String title_str;
+    private String content_str;
+    private String location_str;
+    private String image_path_str;
 
     Calendar myCalendar = Calendar.getInstance();
 
@@ -82,16 +95,27 @@ public class AddMemoActivity extends AppCompatActivity {
         input_memo_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                title_str = title_edit.getText().toString();
+                content_str = content_edit.getText().toString();
+                location_str = location_edit.getText().toString();
+
                 Intent main_intent = new Intent(AddMemoActivity.this, MainActivity.class);
+                main_intent.putExtra("title", title_str);
+                main_intent.putExtra("content", content_str);
+                main_intent.putExtra("memo_date", date_str);
+                main_intent.putExtra("location", location_str);
+                main_intent.putExtra("image_path", image_path_str);
+
+                setResult(RESULT_OK, main_intent);
 
                 // 인텐트 시작
-                startActivity(main_intent);
+                //startActivity(main_intent);
 
                 finish();
             }
         });
 
-        // 일정 날짜
+        // 메모 날짜
         date_edit = findViewById(R.id.date_select);
         date_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +142,15 @@ public class AddMemoActivity extends AppCompatActivity {
             }
 
         });
+
+        // 메모 위치
+        location_edit = findViewById(R.id.edit_location);
+
+        // 일정 제목
+        title_edit = findViewById(R.id.TitleEdit);
+
+        // 일정 내용
+        content_edit = findViewById(R.id.ContentEdit);
     }
 
     private void updateLabel() {
@@ -126,6 +159,8 @@ public class AddMemoActivity extends AppCompatActivity {
 
         EditText et_date = findViewById(R.id.date_select);
         et_date.setText(sdf.format(myCalendar.getTime()));
+        date_str = sdf.format(myCalendar.getTime());
+
     }
 
     @Override
@@ -183,13 +218,14 @@ public class AddMemoActivity extends AppCompatActivity {
 
     // tempFile을 bitmap으로 변환 후, ImageView에 설정
     private void setImage() {
-        ImageView imageView = findViewById(R.id.imageView);
+        image_edit = findViewById(R.id.imageView);
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
         Log.d(TAG, "setImage : " + tempFile.getAbsolutePath());
 
-        imageView.setImageBitmap(originalBm);
+        image_edit.setImageBitmap(originalBm);
+        image_path_str = tempFile.getAbsolutePath();
 
         /*  tempFile 사용 후 null 처리
          *  (resultCode != RESULT_OK) 일 때 tempFile 을 삭제하기 때문에
@@ -233,6 +269,18 @@ public class AddMemoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        Intent intent = getIntent();
+        if(intent != null) {
+            title_edit.setText(intent.getStringExtra("title"));
+            content_edit.setText(intent.getStringExtra("content"));
+            date_edit.setText(intent.getStringExtra("memo_date"));
+
+            title_str = intent.getStringExtra("title");
+            content_str = intent.getStringExtra("content");
+            date_str = intent.getStringExtra("memo_date");
+
+        }
+
         Log.i(TAG, "onResume");
     }
 
@@ -241,6 +289,19 @@ public class AddMemoActivity extends AppCompatActivity {
         super.onPause();
 
         Log.i(TAG, "onPause");
+
+        if(TextUtils.isEmpty(title_str)) { // 제목이 비어있는지 판단
+            Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show();
+            //return;
+        }
+        else if(TextUtils.isEmpty(date_str)) { // 메모 날짜가 비어있는지 판단
+            Toast.makeText(this, "메모 날짜를 입력해주세요", Toast.LENGTH_SHORT).show();
+            //return;
+        }
+        else {
+            Toast.makeText(this, "메모가 입력되었습니다", Toast.LENGTH_SHORT).show();
+            //return;
+        }
     }
 
     @Override

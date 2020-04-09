@@ -23,9 +23,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.my_scheduler.R;
+import com.example.my_scheduler.data.MemoDiaryData;
 import com.example.my_scheduler.data.ScheduleRecyclerData;
 //import com.example.my_scheduler.data.SchedulerData;
 import com.example.my_scheduler.recycler_adapter.HorizontalAdapter;
+import com.example.my_scheduler.recycler_adapter.MemoDiaryRecyclerAdapter;
 import com.example.my_scheduler.recycler_adapter.ScheduleRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -78,15 +80,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     RecyclerView recyclerView = null ;
     ScheduleRecyclerAdapter schedule_adapter = null ;
+    MemoDiaryRecyclerAdapter memo_adapter = null;
+    MemoDiaryRecyclerAdapter diary_adapter = null;
 
     // 메인 recyclerview 에 표시될 스케줄 리스트
     public static ArrayList<ScheduleRecyclerData> schedule_list = new ArrayList<>();
 
     // 메인 recyclerview 에 표시될 메모 리스트
-    public static ArrayList<ScheduleRecyclerData> memo_list = new ArrayList<>();
+    public static ArrayList<MemoDiaryData> memo_list = new ArrayList<>();
 
     // 메인 recyclerview 에 표시될 일기 리스트
-    public static ArrayList<ScheduleRecyclerData> diary_list = new ArrayList<>();
+    public static ArrayList<MemoDiaryData> diary_list = new ArrayList<>();
 
     // back 버튼 종료 이벤트 설정
     private final long FINISH_INTERVAL_TIME = 2000;
@@ -111,8 +115,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView = findViewById(R.id.total_recycler) ;
 
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-        schedule_adapter = new ScheduleRecyclerAdapter(schedule_list) ;
-        recyclerView.setAdapter(schedule_adapter) ;
+        schedule_adapter = new ScheduleRecyclerAdapter(schedule_list);
+        memo_adapter = new MemoDiaryRecyclerAdapter(memo_list);
+        diary_adapter = new MemoDiaryRecyclerAdapter(diary_list);
+
+        //recyclerView.setAdapter(schedule_adapter);
+        recyclerView.setAdapter(memo_adapter);
+        //recyclerView.setAdapter(diary_adapter);
+
         // 리사이클러뷰에 LinearLayoutManager 지정. (vertical)
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -123,12 +133,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(View v, int position) {
                 item_position = position;
 
-                Intent edit_item_intent = new Intent(MainActivity.this, AddScheduleActivity.class);
+                Intent edit_item_intent = new Intent(MainActivity.this, AddMemoActivity.class);
 
                 edit_item_intent.putExtra("title", schedule_list.get(position).getTitle());
                 edit_item_intent.putExtra("content", schedule_list.get(position).getContent());
-                edit_item_intent.putExtra("start_date", schedule_list.get(position).getStart());
-                edit_item_intent.putExtra("end_date", schedule_list.get(position).getEnd());
+                //edit_item_intent.putExtra("start_date", schedule_list.get(position).getStart());
+                //edit_item_intent.putExtra("end_date", schedule_list.get(position).getEnd());
 
 
                 startActivityForResult(edit_item_intent, 4321);
@@ -239,19 +249,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         allScheduleList.add(diaryList);
     }*/
 
-    public void addItem(String today_date, String title, String content, String start, String end ) {
+    /*public void addItem(String today_date, String title, String content, String start, String end ) {
         ScheduleRecyclerData item = new ScheduleRecyclerData(today_date, title, content, start, end);
 
         schedule_list.add(item);
+    }*/
+    public void addItem(String today_date, String title, String content) {
+        MemoDiaryData item = new MemoDiaryData(today_date, title, content);
+
+        memo_list.add(item);
     }
 
-    public void setItem(String today_date, String title, String content, String start, String end ) {
+
+    /*public void setItem(String today_date, String title, String content, String start, String end ) {
         ScheduleRecyclerData item = new ScheduleRecyclerData(today_date, title, content, start, end);
 
         schedule_list.add(item_position, item);
+    }*/
+    public void setItem(String today_date, String title, String content) {
+        MemoDiaryData item = new MemoDiaryData(today_date, title, content);
+
+        memo_list.add(item_position, item);
     }
 
-    public void deleteItem(int position) {
+    /*public void deleteItem(int position) {
         schedule_list.remove(item_position);
 
         schedule_adapter.notifyItemRemoved(item_position);
@@ -263,6 +284,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else {
             noSchedule_text.setVisibility(View.VISIBLE);
         }
+    }*/
+    public void deleteItem(int position) {
+        memo_list.remove(item_position);
+
+        memo_adapter.notifyItemRemoved(item_position);
+
+        TextView noSchedule_text = findViewById(R.id.noSchedule);
+        if(memo_list.size() > 0) {
+            noSchedule_text.setVisibility(View.GONE);
+        }
+        else {
+            noSchedule_text.setVisibility(View.VISIBLE);
+        }
+
+        /*TextView noMemo_text = findViewById(R.id.noMemo);
+        if(memo_list.size() > 0) {
+            noMemo_text.setVisibility(View.GONE);
+        }
+        else {
+            noMemo_text.setVisibility(View.VISIBLE);
+        }
+
+        TextView nodiary_text = findViewById(R.id.noDiary);
+        if(diary_list.size() > 0) {
+            nodiary_text.setVisibility(View.GONE);
+        }
+        else {
+            nodiary_text.setVisibility(View.VISIBLE);
+        }*/
     }
 
     public void updateSharedPreference() {
@@ -355,8 +405,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (data != null && resultCode == Activity.RESULT_OK) {
                 title = data.getStringExtra("title");
                 content = data.getStringExtra("content");
-                start_date = data.getStringExtra("start_date");
-                end_date = data.getStringExtra("end_date");
+                //start_date = data.getStringExtra("start_date");
+                //end_date = data.getStringExtra("end_date");
 
                 start_time = data.getStringExtra("start_time");
                 end_time = data.getStringExtra("end_time");
@@ -367,10 +417,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 //System.out.println(title + " / " + content + " / " + start_date + " / " + end_date);
 
-                if( (title != null) && (start_date != null) && (end_date != null) ) {
-                    addItem(textDate.getText().toString(), title, content, start_date, end_date);
+                if( (title != null) /*&& (start_date != null) && (end_date != null)*/ ) {
+                    addItem(textDate.getText().toString(), title, content/*, start_date, end_date*/);
 
-                    updateSharedPreference();
+                    //updateSharedPreference();
                 }
             }
         }
@@ -380,8 +430,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (data != null && resultCode == Activity.RESULT_OK) {
                 title = data.getStringExtra("title");
                 content = data.getStringExtra("content");
-                start_date = data.getStringExtra("start_date");
-                end_date = data.getStringExtra("end_date");
+                //start_date = data.getStringExtra("start_date");
+                //end_date = data.getStringExtra("end_date");
 
                 start_time = data.getStringExtra("start_time");
                 end_time = data.getStringExtra("end_time");
@@ -392,9 +442,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if( (title != null) && (start_date != null) && (end_date != null) ) {
                     schedule_list.remove(item_position);
-                    setItem(textDate.getText().toString(), title, content, start_date, end_date);
+                    setItem(textDate.getText().toString(), title, content/*, start_date, end_date*/);
 
-                    updateSharedPreference();
+                    //updateSharedPreference();
                 }
             }
         }
@@ -438,14 +488,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
 
         schedule_adapter.notifyDataSetChanged() ;
+        memo_adapter.notifyDataSetChanged() ;
+        diary_adapter.notifyDataSetChanged() ;
 
         TextView noSchedule_text = findViewById(R.id.noSchedule);
-        if(schedule_list.size() > 0) {
+        if(memo_list.size() > 0) {
             noSchedule_text.setVisibility(View.GONE);
         }
         else {
             noSchedule_text.setVisibility(View.VISIBLE);
         }
+
+        /*TextView noMemo_text = findViewById(R.id.noMemo);
+        if(memo_list.size() > 0) {
+            noMemo_text.setVisibility(View.GONE);
+        }
+        else {
+            noMemo_text.setVisibility(View.VISIBLE);
+        }
+
+        TextView nodiary_text = findViewById(R.id.noDiary);
+        if(diary_list.size() > 0) {
+            nodiary_text.setVisibility(View.GONE);
+        }
+        else {
+            nodiary_text.setVisibility(View.VISIBLE);
+        }*/
 
         Log.i(TAG, "onStart");
     }

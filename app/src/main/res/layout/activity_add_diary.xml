@@ -105,6 +105,7 @@
                 android:textSize="20dp" />
 
             <RadioGroup
+                android:id="@+id/weather_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -116,27 +117,27 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/no_repeat_btn"
+                    android:id="@+id/sunny_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="맑음" />
 
                 <RadioButton
-                    android:id="@+id/every_year_btn"
+                    android:id="@+id/cloud_btn"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="흐림" />
 
                 <RadioButton
-                    android:id="@+id/every_month_btn"
+                    android:id="@+id/rainy_btn"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="비" />
 
                 <RadioButton
-                    android:id="@+id/every_week_btn"
+                    android:id="@+id/snowy_btn"
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -170,7 +171,7 @@
             <!--  일기의 제목      -->
             <EditText
                 android:id="@+id/TitleEdit"
-                android:layout_below="@id/get_image"
+                android:layout_below="@id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

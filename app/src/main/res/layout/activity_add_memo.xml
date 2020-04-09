@@ -100,7 +100,7 @@
                 android:layout_below="@id/set_date"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="30dp"
-                android:text="위치"
+                android:text="위치 입력"
                 android:textColor="@color/colorBlack"
                 android:textSize="20dp" />
 
@@ -114,10 +114,9 @@
                 android:layout_marginRight="5dp"
                 android:clickable="true"
                 android:ems="15"
-                android:focusable="false"
                 android:gravity="center"
                 android:hint="위치"
-                android:inputType="datetime"
+                android:inputType="textPostalAddress"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray" />
 

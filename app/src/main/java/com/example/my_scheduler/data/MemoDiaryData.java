@@ -1,12 +1,22 @@
 package com.example.my_scheduler.data;
 
 public class MemoDiaryData {
-    public String title_str;
-    public String content_str;
+    private String today_date;
+    private String title_str;
+    private String content_str;
 
-    public MemoDiaryData(String title, String content) {
+    public MemoDiaryData(String date, String title, String content) {
+        this.today_date = date;
         this.title_str = title;
         this.content_str = content;
+    }
+
+    public String getToday_date() {
+        return today_date;
+    }
+
+    public void setToday_date(String today_date) {
+        this.today_date = today_date;
     }
 
     public String getTitle() {

@@ -1,8 +1,10 @@
 package com.example.my_scheduler.activity;
 
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,12 +14,15 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
@@ -38,6 +43,23 @@ public class AddDiaryActivity extends AppCompatActivity {
     Button get_image_btn;
 
     private EditText date_edit;
+
+    private EditText title_edit; // TitleEdit
+    private EditText content_edit; // ContentEdit
+
+    private ImageView image_edit; // imageView
+
+    /*private RadioButton sunny_btn;
+    private RadioButton cloud_btn;
+    private RadioButton rainy_btn;
+    private RadioButton snowy_btn;*/
+    private RadioGroup weather_group;
+
+    private String date_str;
+    private String title_str;
+    private String content_str;
+    private String image_path_str;
+    private String weather_str;
 
     Calendar myCalendar = Calendar.getInstance();
 
@@ -83,10 +105,18 @@ public class AddDiaryActivity extends AppCompatActivity {
         input_diary_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                title_str = title_edit.getText().toString();
+                content_str = content_edit.getText().toString();
+
                 Intent main_intent = new Intent(AddDiaryActivity.this, MainActivity.class);
+                main_intent.putExtra("title", title_str);
+                main_intent.putExtra("content", content_str);
+                main_intent.putExtra("diary_date", date_str);
+                main_intent.putExtra("weather", weather_str);
+                main_intent.putExtra("image_path", image_path_str);
 
                 // 인텐트 시작
-                startActivity(main_intent);
+                //startActivity(main_intent);
 
                 finish();
             }
@@ -120,6 +150,31 @@ public class AddDiaryActivity extends AppCompatActivity {
             }
 
         });
+
+        // 일정 제목
+        title_edit = findViewById(R.id.TitleEdit);
+
+        // 일정 내용
+        content_edit = findViewById(R.id.ContentEdit);
+
+        // 날씨 입력 라디오 버튼
+        /*sunny_btn = findViewById(R.id.sunny_btn);
+        cloud_btn = findViewById(R.id.cloud_btn);
+        rainy_btn = findViewById(R.id.rainy_btn);
+        snowy_btn = findViewById(R.id.snowy_btn);*/
+
+        weather_group = findViewById(R.id.weather_group);
+        weather_group.clearCheck();
+        weather_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                RadioButton radioButton = group.findViewById(checkedId);
+                if( (null != radioButton) && (checkedId > -1) ) {
+                    weather_str = radioButton.getText().toString();
+                }
+            }
+        });
     }
 
     private void updateLabel() {
@@ -128,6 +183,7 @@ public class AddDiaryActivity extends AppCompatActivity {
 
         EditText et_date = findViewById(R.id.date_select);
         et_date.setText(sdf.format(myCalendar.getTime()));
+        date_str = sdf.format(myCalendar.getTime());
     }
 
     @Override
@@ -185,13 +241,14 @@ public class AddDiaryActivity extends AppCompatActivity {
 
     // tempFile을 bitmap으로 변환 후, ImageView에 설정
     private void setImage() {
-        ImageView imageView = findViewById(R.id.imageView);
+        image_edit = findViewById(R.id.imageView);
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
         Log.d(TAG, "setImage : " + tempFile.getAbsolutePath());
 
-        imageView.setImageBitmap(originalBm);
+        image_edit.setImageBitmap(originalBm);
+        image_path_str = tempFile.getAbsolutePath();
 
         /*  tempFile 사용 후 null 처리
          *  (resultCode != RESULT_OK) 일 때 tempFile 을 삭제하기 때문에
@@ -235,6 +292,18 @@ public class AddDiaryActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        Intent intent = getIntent();
+        if(intent != null) {
+            title_edit.setText(intent.getStringExtra("title"));
+            content_edit.setText(intent.getStringExtra("content"));
+            date_edit.setText(intent.getStringExtra("diary_date"));
+
+            title_str = intent.getStringExtra("title");
+            content_str = intent.getStringExtra("content");
+            date_str = intent.getStringExtra("diary_date");
+
+        }
+
         Log.i(TAG, "onResume");
     }
 
@@ -243,6 +312,19 @@ public class AddDiaryActivity extends AppCompatActivity {
         super.onPause();
 
         Log.i(TAG, "onPause");
+
+        if(TextUtils.isEmpty(title_str)) { // 제목이 비어있는지 판단
+            Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show();
+            //return;
+        }
+        else if(TextUtils.isEmpty(date_str)) { // 일기 날짜가 비어있는지 판단
+            Toast.makeText(this, "일기 날짜를 입력해주세요", Toast.LENGTH_SHORT).show();
+            //return;
+        }
+        else {
+            Toast.makeText(this, "일기가 입력되었습니다", Toast.LENGTH_SHORT).show();
+            //return;
+        }
     }
 
     @Override
